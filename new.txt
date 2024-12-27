@@ -1,0 +1,12 @@
+#include<omp.h>
+#include<stdio.h>
+int thread_local_var;
+int main()
+{
+int thread_local_var=10;
+{
+thread_local_var+=omp_get_thread_num();
+printf("Thread %d has thread_local_var=%d\n",omp_get_thread_num(),thread_local_var);
+}
+return 0;
+}
